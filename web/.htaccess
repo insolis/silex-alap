@@ -1,0 +1,8 @@
+Options -MultiViews
+
+Order allow,deny
+Allow from all
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]

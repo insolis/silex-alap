@@ -1,0 +1,15 @@
+body {
+  padding-top: 50px;
+}
+
+table form {
+    display: inline;
+}
+
+table form input {
+    vertical-align: top;
+}
+
+.table-striped tbody td:last-child {
+    text-align: right;
+}
