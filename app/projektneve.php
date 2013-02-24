@@ -6,17 +6,43 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app = require __DIR__ . "/bootstrap.php";
 
+$app->before(function (Request $request) use ($app) {
+
+    if ($request->request->has("fbdata")) {
+        $data = $request->request->get("fbdata");
+
+        if (isset($data["user_id"])) {
+            $app["session"]->set("user_id", $data["user_id"]);
+        }
+    }
+
+    if (
+        !$app["session"]->has("user_id") &&
+        0 !== strpos($request->get("_route"), "admin_") &&
+        !in_array($request->get("_route"), array("fb_addhandler"))
+    ) {
+        $app["session"]->set("auth_redirect_url", $request->getRequestUri());
+        return new Response("<script type='text/javascript'>top.location = '" . $app["fb"]->getAuthorizationUrl() . "';</script>");
+    }
+});
+
 //--------------------------------------------------------------------------------------------------
 
 $app->match("/fb_addhandler", function (Request $request) use ($app) {
-    if (!$request->query->has("code")) {
+    if (!$request->request->has("fbdata")) {
         return $app->redirect($app["url_generator"]->generate("homepage"));
     }
 
-    $data = $app["fb"]->getUserData();
-    $app["monolog"]->addInfo("ezt kaptuk a fbtol", $data);
+    $data = $request->request->get("fbdata");
 
-    // ide jon a $data feldolgozasa - user regisztracio, bejelentkeztetes - ez projektfuggo
+    try {
+        $app["felhasznalo"]->insert(array(
+            "id"    =>  $data["id"],
+        ));
+    }
+    catch (Exception $e) {
+        // mar volt ilyen userid, ilyenkor semmi gond, ujra engedelyezett a juzer
+    }
 
     return $app->redirect($app["url_generator"]->generate("homepage"));
 })->bind("fb_addhandler");
