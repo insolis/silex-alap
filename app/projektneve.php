@@ -19,7 +19,7 @@ $app->before(function (Request $request) use ($app) {
     if (
         !$app["session"]->has("user_id") &&
         0 !== strpos($request->get("_route"), "admin_") &&
-        !in_array($request->get("_route"), array("fb_addhandler"))
+        !in_array($request->get("_route"), array("homepage", "fb_addhandler"))
     ) {
         $app["session"]->set("auth_redirect_url", $request->getRequestUri());
         return new Response("<script type='text/javascript'>top.location = '" . $app["fb"]->getAuthorizationUrl() . "';</script>");
