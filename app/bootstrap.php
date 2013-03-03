@@ -27,7 +27,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 $app->register(new Knp\Provider\RepositoryServiceProvider(), array("repository.repositories" => array(
-    "admin"         =>  'Insolis\\Repository\\Admin',
+    "db.admin"          =>  'Insolis\\Repository\\Admin',
 )));
 
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
