@@ -16,9 +16,12 @@ $app->before(function (Request $request) use ($app) {
         }
     }
 
+    $route = $request->get("_route");
     if (
         !$app["session"]->has("user_id") &&
-        0 !== strpos($request->get("_route"), "admin_") &&
+        0 !== strpos($route, "admin_") &&
+        0 !== strpos($route, "_profiler") &&
+        0 !== strpos($route, "_wdt") &&
         !in_array($request->get("_route"), array("homepage", "fb_addhandler"))
     ) {
         $app["session"]->set("auth_redirect_url", $request->getRequestUri());

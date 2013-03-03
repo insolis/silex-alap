@@ -1,5 +1,5 @@
 {
-    "hash": "22d17b87596c87e451ffcc224b289132",
+    "hash": "07a759689d9ad4e9a67f14ed11c2ff3c",
     "packages": [
         {
             "name": "doctrine/common",
@@ -463,6 +463,51 @@
                 "microframework"
             ],
             "time": "2013-02-26 12:56:45"
+        },
+        {
+            "name": "silex/web-profiler",
+            "version": "dev-master",
+            "target-dir": "Silex/Provider",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sensiolabs/Silex-WebProfiler.git",
+                "reference": "d23a571f4b370aa040e2de7db24bf203b4745148"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/Silex-WebProfiler/zipball/d23a571f4b370aa040e2de7db24bf203b4745148",
+                "reference": "d23a571f4b370aa040e2de7db24bf203b4745148",
+                "shasum": ""
+            },
+            "require": {
+                "silex/silex": ">=1.0,<2.0",
+                "symfony/stopwatch": ">=2.2-RC1,<3.0",
+                "symfony/web-profiler-bundle": ">=2.2-RC1,<3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Silex\\Provider\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "A WebProfiler for Silex",
+            "homepage": "http://silex.sensiolabs.org/",
+            "time": "2013-02-19 15:30:35"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1061,6 +1106,53 @@
             "time": "2013-02-11 11:24:47"
         },
         {
+            "name": "symfony/stopwatch",
+            "version": "v2.2.0",
+            "target-dir": "Symfony/Component/Stopwatch",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Stopwatch.git",
+                "reference": "v2.2.0-RC3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Stopwatch/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Stopwatch\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Stopwatch Component",
+            "homepage": "http://symfony.com",
+            "time": "2013-01-04 16:58:00"
+        },
+        {
             "name": "symfony/translation",
             "version": "v2.2.0",
             "target-dir": "Symfony/Component/Translation",
@@ -1243,6 +1335,61 @@
             "time": "2013-02-28 14:29:34"
         },
         {
+            "name": "symfony/web-profiler-bundle",
+            "version": "v2.2.0",
+            "target-dir": "Symfony/Bundle/WebProfilerBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/WebProfilerBundle.git",
+                "reference": "v2.2.0-RC3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/WebProfilerBundle/zipball/v2.2.0-RC3",
+                "reference": "v2.2.0-RC3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/http-kernel": ">=2.2,<2.3-dev",
+                "symfony/routing": ">=2.2,<2.3-dev",
+                "symfony/twig-bridge": "2.2.*"
+            },
+            "require-dev": {
+                "symfony/config": ">=2.2,<2.3-dev",
+                "symfony/dependency-injection": ">=2.0,<3.0",
+                "symfony/stopwatch": ">=2.2,<2.3-dev"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Bundle\\WebProfilerBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony WebProfilerBundle",
+            "homepage": "http://symfony.com",
+            "time": "2013-02-15 09:53:40"
+        },
+        {
             "name": "twig/twig",
             "version": "v1.12.2",
             "source": {
@@ -1300,6 +1447,7 @@
     "stability-flags": {
         "silex/silex": 20,
         "knplabs/repository-service-provider": 20,
-        "insolis/facebook-service-provider": 20
+        "insolis/facebook-service-provider": 20,
+        "silex/web-profiler": 20
     }
 }
