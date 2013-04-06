@@ -16,7 +16,7 @@
         "knplabs/repository-service-provider": "dev-master@dev",
         "insolis/facebook-service-provider": "dev-master@dev",
         "ircmaxell/password-compat": "~1.0",
-        "silex/web-profiler": "~1.0@dev"
+        "silex/web-profiler": "~1.0"
     },
 
     "autoload": {
