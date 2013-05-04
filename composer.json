@@ -1,6 +1,6 @@
 {
     "require": {
-        "silex/silex": "1.0.*@dev",
+        "silex/silex": "~1.0",
         "twig/twig": "1.*",
         "monolog/monolog": "1.*",
         "doctrine/dbal": "2.*",
@@ -12,7 +12,7 @@
         "symfony/translation": "2.2.*",
         "symfony/twig-bridge": "2.2.*",
 
-        "swiftmailer/swiftmailer": "~4.2",
+        "swiftmailer/swiftmailer": "~5.0",
         "knplabs/repository-service-provider": "dev-master@dev",
         "insolis/facebook-service-provider": "dev-master@dev",
         "ircmaxell/password-compat": "~1.0",
