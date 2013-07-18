@@ -3,39 +3,34 @@
 
 set_time_limit(0);
 
-$app = require __DIR__ . "/app/teruletfoglalas.php";
+$app = require __DIR__ . "/app/projektneve.php";
 $app->boot();
 
 use Symfony\Component\Console\Application;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Finder\Finder;
 
 $console = new Application("Projekt neve", "1.0");
 
-/* az alabbiak azert maradtak csak benn, hogy latszodjon, hogy kell parancssoros taskot kesziteni
-a pelda meghivasa: php console.php pontok
+if (is_dir($dir = ROOT . "/src/Insolis/Command")) {
+    $finder = new Finder();
 
-$console->register("pontok")
-  ->setDescription("Pontok novelese")
-  ->setCode(function(InputInterface $input, OutputInterface $output) use ($app) {
-    $pontok = $app["pont"]->findAll();
+    $finder->files()->name("*Command.php")->in($dir);
+    $prefix = "Insolis\\Command";
 
-    foreach ($pontok as $pont) {
-        if ($pont["tulajdonos"] && !in_array($pont["tulajdonos"], $app["kizart_jatekosok"])) {
-            $dt = \DateTime::createFromFormat("Y-m-d H:i:s", $pont["elfoglalas_ideje"]);
+    foreach ($finder as $file) {
+        $ns = $prefix;
 
-            if ($dt->modify("+1 day") < new \DateTime()) {
-                $pont["tulajdonos"] = false;
-
-                $app["pont"]->update(array("tulajdonos" => null), array("id" => $pont["id"]));
-            }
+        if ($relativePath = $file->getRelativePath()) {
+            $ns .= '\\'.strtr($relativePath, '/', '\\');
         }
 
-        if ($pont["tulajdonos"]) {
-            $app["felhasznalo"]->pontokMentese($pont["tulajdonos"], 1);
+        $r = new \ReflectionClass($ns . "\\" . $file->getBasename(".php"));
+
+        if ($r->isSubclassOf("Symfony\\Component\\Console\\Command\\Command") && !$r->isAbstract()) {
+            /** @noinspection PhpParamsInspection */
+            $console->add($r->newInstance($app));
         }
     }
-  });
-*/
+}
 
 $console->run();
