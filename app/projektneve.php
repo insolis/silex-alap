@@ -1,6 +1,5 @@
 <?php
 
-use Insolis\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -24,7 +23,6 @@ $app->before(function (Request $request) use ($app) {
         0 !== strpos($route, "_wdt") &&
         !in_array($request->get("_route"), array("homepage", "fb_addhandler"))
     ) {
-        $app["session"]->set("auth_redirect_url", $request->getRequestUri());
         return new Response("<script type='text/javascript'>top.location = '" . $app["fb"]->getAuthorizationUrl() . "';</script>");
     }
 });
@@ -39,11 +37,11 @@ $app->match("/fb_addhandler", function (Request $request) use ($app) {
     $data = $request->request->get("fbdata");
 
     try {
-        $app["felhasznalo"]->insert(array(
+        $app["db.felhasznalo"]->insert(array(
             "id"    =>  $data["id"],
         ));
     }
-    catch (Exception $e) {
+    catch (\Exception $e) {
         // mar volt ilyen userid, ilyenkor semmi gond, ujra engedelyezett a juzer
     }
 

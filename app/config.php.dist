@@ -5,8 +5,6 @@ $app["debug"] = false;
 $app["fb.options"] = array(
     "app_id"          =>  "",
     "app_secret"      =>  "",
-    "app_url"         =>  "",
-    "canvas_url"      =>  "",
     "permissions"     =>  array(),
     "redirect_route"  =>  "fb_addhandler",
 );

@@ -61,11 +61,7 @@ if (!file_exists(__DIR__ . "/config.php")) {
 require __DIR__ . "/config.php";
 
 if ($app["debug"]) {
-    \Symfony\Component\HttpKernel\Debug\ErrorHandler::register();
-
-    if ("cli" !== php_sapi_name()) {
-        \Symfony\Component\HttpKernel\Debug\ExceptionHandler::register();
-    }
+    Symfony\Component\Debug\Debug::enable(E_ALL, true);
 
     $app->register($p = new Silex\Provider\WebProfilerServiceProvider(), array(
         "profiler.cache_dir" => __DIR__ . "/../cache/profiler/"

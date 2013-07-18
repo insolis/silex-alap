@@ -11,7 +11,7 @@ class Admin implements ControllerProviderInterface
     public function connect(Application $app) {
         $controllers = $app["controllers_factory"];
 
-        $app->before(function(Request $request) use ($app) {
+        $app->before(function (Request $request) use ($app) {
             if (
                 false === strpos($request->get("_route"), "admin_") ||
                 in_array($request->get("_route"), array("admin_login", "admin_logout"))
@@ -24,18 +24,19 @@ class Admin implements ControllerProviderInterface
             }
         });
 
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
 
         $controllers->get("/", function() use ($app) {
-            return $app->redirect($app["url_generator"]->generate("admin_harmadikbadge"));
+            return $app->redirect($app["url_generator"]->generate("admin_routename"));
         })->bind("admin_homepage");
 
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
 
         $controllers->match("/login", function(Request $request) use ($app) {
             $error = "";
-            if ($request->getMethod() == "POST") {
-                if ($app["admin"]->isValid($request->get("username"), $request->get("password"))) {
+
+            if ($request->isMethod("post")) {
+                if ($app["admin"]->isValid($request->request->get("username"), $request->request->get("password"))) {
                     $app["session"]->set("admin_authenticated", true);
                     return $app->redirect($app["url_generator"]->generate("admin_homepage"));
                 }
@@ -43,9 +44,9 @@ class Admin implements ControllerProviderInterface
             }
 
             return $app["twig"]->render("admin/login.html.twig", array("error" => $error));
-        })->method("GET|POST")->bind("admin_login");
+        })->bind("admin_login");
 
-        //----------------------------------------------------------------------
+        //------------------------------------------------------------------------------------------
 
         $controllers->get("/logout", function() use ($app) {
             $app["session"]->remove("admin_authenticated");
