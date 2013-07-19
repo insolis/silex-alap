@@ -48,7 +48,7 @@ $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 
 
-$app->register(new Knp\Provider\RepositoryServiceProvider(), array("repository.repositories" => array(
+$app->register(new Insolis\Provider\RepositoryServiceProvider(), array("repository.repositories" => array(
     "db.admin"          =>  'Insolis\\Repository\\Admin',
 )));
 
