@@ -72,6 +72,8 @@ if ($app["debug"]) {
 
 $app["session"]->start();
 
-$app["twig"]->addGlobal("fb", $app["fb.options"]);
+$app["twig"] = $app->share($app->extend("twig", function (\Twig_Environment $twig, Silex\Application $app) {
+    $twig->addGlobal("fb", $app["fb.options"]);
+}));
 
 return $app;
