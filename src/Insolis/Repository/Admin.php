@@ -2,7 +2,7 @@
 
 namespace Insolis\Repository;
 
-use Knp\Repository;
+use Insolis\Repository;
 
 class Admin extends Repository
 {

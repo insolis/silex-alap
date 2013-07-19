@@ -3,26 +3,31 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b94f7984a85487b2547572040fabdee8",
+    "hash": "67592ead097d6a29360e799872be4224",
     "packages": [
         {
             "name": "doctrine/common",
-            "version": "2.2.3",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/common",
-                "reference": "2.2.3"
+                "reference": "2.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/common/zipball/2.2.3",
-                "reference": "2.2.3",
+                "url": "https://github.com/doctrine/common/zipball/2.3.0",
+                "reference": "2.3.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\Common": "lib/"
@@ -30,7 +35,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL"
+                "MIT"
             ],
             "authors": [
                 {
@@ -67,27 +72,32 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2012-08-29 01:04:14"
+            "time": "2012-09-19 22:55:18"
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.2.2",
+            "version": "2.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/dbal",
-                "reference": "2.2.2"
+                "url": "https://github.com/doctrine/dbal.git",
+                "reference": "2.3.4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/dbal/zipball/2.2.2",
-                "reference": "2.2.2",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2.3.4",
+                "reference": "2.3.4",
                 "shasum": ""
             },
             "require": {
-                "doctrine/common": ">=2.2.0,<=2.2.99",
+                "doctrine/common": ">=2.3.0,<2.5-dev",
                 "php": ">=5.3.2"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Doctrine\\DBAL": "lib/"
@@ -95,7 +105,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL"
+                "MIT"
             ],
             "authors": [
                 {
@@ -125,7 +135,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2012-04-13 00:56:12"
+            "time": "2013-05-11 07:45:37"
         },
         {
             "name": "insolis/facebook-service-provider",
@@ -162,6 +172,53 @@
             ],
             "description": "Lightweight silex service to ease communication with facebook",
             "time": "2013-07-16 16:09:01"
+        },
+        {
+            "name": "insolis/repository-service-provider",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/insolis/RepositoryServiceProvider.git",
+                "reference": "v1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/insolis/RepositoryServiceProvider/zipball/v1.0",
+                "reference": "v1.0",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": ">=2.1, <2.4",
+                "php": ">=5.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Insolis\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KnpLabs",
+                    "homepage": "http://knplabs.com"
+                },
+                {
+                    "name": "Gábor Fási",
+                    "homepage": "http://maerlyn.eu"
+                }
+            ],
+            "description": "Doctrine repository service provider for Silex",
+            "homepage": "http://knplabs.com",
+            "keywords": [
+                "doctrine2",
+                "repository",
+                "silex"
+            ],
+            "time": "2013-07-19 08:37:52"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -201,49 +258,6 @@
                 "password"
             ],
             "time": "2013-04-30 19:58:08"
-        },
-        {
-            "name": "knplabs/repository-service-provider",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/KnpLabs/RepositoryServiceProvider.git",
-                "reference": "62920db67a5721b7ad10b0648ddc79ef26367ef9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/RepositoryServiceProvider/zipball/62920db67a5721b7ad10b0648ddc79ef26367ef9",
-                "reference": "62920db67a5721b7ad10b0648ddc79ef26367ef9",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/dbal": ">=2.1, <2.3",
-                "php": ">=5.3.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Knp\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "KnpLabs",
-                    "homepage": "http://knplabs.com"
-                }
-            ],
-            "description": "Doctrine repository service provider for Silex",
-            "homepage": "http://knplabs.com",
-            "keywords": [
-                "doctrine2",
-                "repository",
-                "silex"
-            ],
-            "time": "2012-10-07 21:07:54"
         },
         {
             "name": "monolog/monolog",
@@ -1687,7 +1701,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "knplabs/repository-service-provider": 20,
         "insolis/facebook-service-provider": 20
     },
     "platform": [
