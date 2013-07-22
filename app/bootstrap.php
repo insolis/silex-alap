@@ -49,7 +49,6 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 
 
 $app->register(new Insolis\Provider\RepositoryServiceProvider(), array("repository.repositories" => array(
-    "db.admin"          =>  'Insolis\\Repository\\Admin',
 )));
 
 $app->register(new Insolis\Provider\FacebookServiceProvider());
@@ -74,6 +73,8 @@ $app["session"]->start();
 
 $app["twig"] = $app->share($app->extend("twig", function (\Twig_Environment $twig, Silex\Application $app) {
     $twig->addGlobal("fb", $app["fb.options"]);
+
+    return $twig;
 }));
 
 return $app;

@@ -16,8 +16,8 @@
         "swiftmailer/swiftmailer": "5.*",
         "insolis/repository-service-provider": "1.*",
         "insolis/facebook-service-provider": "dev-master@dev",
-        "ircmaxell/password-compat": "1.*",
-        "silex/web-profiler": "1.*"
+        "silex/web-profiler": "1.*",
+        "fp/lightopenid": "dev-master@dev"
     },
 
     "autoload": {

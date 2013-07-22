@@ -13,14 +13,34 @@ class Admin implements ControllerProviderInterface
 
         $app->before(function (Request $request) use ($app) {
             if (
-                false === strpos($request->get("_route"), "admin_") ||
-                in_array($request->get("_route"), array("admin_login", "admin_logout"))
+                false === strpos($request->get("_route"), "admin_")
             ) {
                 return;
             }
 
-            if (!$app["session"]->has("admin_authenticated")) {
-                return $app->redirect($app["url_generator"]->generate("admin_login"));
+            // ha nincs email, akkor szerzunk
+            if (!$app["session"]->has("admin_email")) {
+                $openid = new \LightOpenID($request->server->get("SERVER_NAME"));
+
+                if (!$openid->mode) {
+                    $openid->identity = "https://www.google.com/accounts/o8/id";
+                    $openid->required = ["email" => "contact/email"];
+
+                    return $app->redirect($openid->authUrl());
+                } else {
+                    if ($openid->validate()) {
+                        $attributes = $openid->getAttributes();
+                        $app["session"]->set("admin_email", $attributes["contact/email"]);
+                    }
+                }
+            }
+
+            $email = $app["session"]->get("admin_email");
+            if (
+                !in_array($email, ["fasi.gabor@bdone.hu"]) &&
+                false === strpos($email, "@karmamedia.eu")
+            ) {
+                $app->abort(403);
             }
         });
 
@@ -29,29 +49,6 @@ class Admin implements ControllerProviderInterface
         $controllers->get("/", function() use ($app) {
             return $app->redirect($app["url_generator"]->generate("admin_routename"));
         })->bind("admin_homepage");
-
-        //------------------------------------------------------------------------------------------
-
-        $controllers->match("/login", function(Request $request) use ($app) {
-            $error = "";
-
-            if ($request->isMethod("post")) {
-                if ($app["admin"]->isValid($request->request->get("username"), $request->request->get("password"))) {
-                    $app["session"]->set("admin_authenticated", true);
-                    return $app->redirect($app["url_generator"]->generate("admin_homepage"));
-                }
-                $error = "Hibás felhasználónév és/vagy jelszó";
-            }
-
-            return $app["twig"]->render("admin/login.html.twig", array("error" => $error));
-        })->bind("admin_login");
-
-        //------------------------------------------------------------------------------------------
-
-        $controllers->get("/logout", function() use ($app) {
-            $app["session"]->remove("admin_authenticated");
-            return $app->redirect($app["url_generator"]->generate("admin_login"));
-        })->bind("admin_logout");
 
         return $controllers;
     }
