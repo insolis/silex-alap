@@ -7,8 +7,8 @@ $app = require __DIR__ . "/bootstrap.php";
 
 $app->before(function (Request $request) use ($app) {
 
-    if ($request->request->has("fbdata")) {
-        $data = $request->request->get("fbdata");
+    if ($request->request->has("fb.data")) {
+        $data = $request->request->get("fb.data");
 
         if (isset($data["user_id"])) {
             $app["session"]->set("user_id", $data["user_id"]);
@@ -30,11 +30,11 @@ $app->before(function (Request $request) use ($app) {
 //--------------------------------------------------------------------------------------------------
 
 $app->match("/fb_addhandler", function (Request $request) use ($app) {
-    if (!$request->request->has("fbdata")) {
+    if (!$request->request->has("fb.data")) {
         return $app->redirect($app["url_generator"]->generate("homepage"));
     }
 
-    $data = $request->request->get("fbdata");
+    $data = $request->request->get("fb.data");
 
     try {
         $app["db.felhasznalo"]->insert(array(
