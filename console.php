@@ -11,11 +11,11 @@ use Symfony\Component\Finder\Finder;
 
 $console = new Application("Projekt neve", "1.0");
 
-if (is_dir($dir = ROOT . "/src/Insolis/Command")) {
+if (is_dir($dir = ROOT . "/src/bDone/Command")) {
     $finder = new Finder();
 
     $finder->files()->name("*Command.php")->in($dir);
-    $prefix = "Insolis\\Command";
+    $prefix = "bDone\\Command";
 
     foreach ($finder as $file) {
         $ns = $prefix;

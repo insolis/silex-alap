@@ -1,6 +1,6 @@
 <?php
 
-namespace Insolis\Controller;
+namespace bDone\Controller;
 
 use Silex\ControllerProviderInterface;
 use Silex\Application;

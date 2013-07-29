@@ -60,6 +60,6 @@ $app->after(function (Request $request, Response $response){
     $response->headers->set("P3P", 'CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"');
 });
 
-$app->mount("/admin", new Insolis\Controller\Admin());
+$app->mount("/admin", new bDone\Controller\Admin());
 
 return $app;
