@@ -37,7 +37,7 @@ class Admin implements ControllerProviderInterface
 
             $email = $app["session"]->get("admin_email");
             if (
-                !in_array($email, ["fasi.gabor@bdone.hu"]) &&
+                false === strpos($email, "@bdone.hu") &&
                 false === strpos($email, "@karmamedia.eu")
             ) {
                 $app->abort(403);
