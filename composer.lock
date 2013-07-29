@@ -183,12 +183,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/insolis/facebook-service-provider.git",
-                "reference": "f8bfcf3bd4f8471d4bfeeb9a5ecdb2d5c7f1a941"
+                "reference": "3d56de36e84727f593ef2e0fa7dd9282c8deafbf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/insolis/facebook-service-provider/zipball/f8bfcf3bd4f8471d4bfeeb9a5ecdb2d5c7f1a941",
-                "reference": "f8bfcf3bd4f8471d4bfeeb9a5ecdb2d5c7f1a941",
+                "url": "https://api.github.com/repos/insolis/facebook-service-provider/zipball/3d56de36e84727f593ef2e0fa7dd9282c8deafbf",
+                "reference": "3d56de36e84727f593ef2e0fa7dd9282c8deafbf",
                 "shasum": ""
             },
             "require": {
@@ -211,7 +211,7 @@
                 }
             ],
             "description": "Lightweight silex service to ease communication with facebook",
-            "time": "2013-07-16 16:09:01"
+            "time": "2013-07-25 15:32:46"
         },
         {
             "name": "insolis/repository-service-provider",
@@ -262,26 +262,26 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.5.0",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "1.5.0"
+                "reference": "1.6.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.5.0",
-                "reference": "1.5.0",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1.6.0",
+                "reference": "1.6.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "psr/log": ">=1.0,<2.0"
+                "psr/log": "~1.0"
             },
             "require-dev": {
                 "doctrine/couchdb": "dev-master",
                 "mlehner/gelf-php": "1.0.*",
-                "raven/raven": "0.3.*"
+                "raven/raven": "0.5.*"
             },
             "suggest": {
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
@@ -293,7 +293,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -320,7 +320,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2013-04-23 10:09:48"
+            "time": "2013-07-28 22:38:30"
         },
         {
             "name": "pimple/pimple",
