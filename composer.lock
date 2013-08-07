@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "30780c33339a277b843b9ce189efa28f",
+    "hash": "84df1d58e8fe58492c39a2c2d1e12592",
     "packages": [
         {
             "name": "doctrine/common",
@@ -215,16 +215,16 @@
         },
         {
             "name": "insolis/repository-service-provider",
-            "version": "v1.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/insolis/RepositoryServiceProvider.git",
-                "reference": "v1.0"
+                "reference": "v1.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/insolis/RepositoryServiceProvider/zipball/v1.0",
-                "reference": "v1.0",
+                "url": "https://api.github.com/repos/insolis/RepositoryServiceProvider/zipball/v1.0.1",
+                "reference": "v1.0.1",
                 "shasum": ""
             },
             "require": {
@@ -258,7 +258,7 @@
                 "repository",
                 "silex"
             ],
-            "time": "2013-07-19 08:37:52"
+            "time": "2013-08-06 10:45:08"
         },
         {
             "name": "monolog/monolog",
@@ -1646,16 +1646,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.13.1",
+            "version": "v1.13.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "v1.13.1"
+                "reference": "v1.13.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.1",
-                "reference": "v1.13.1",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/v1.13.2",
+                "reference": "v1.13.2",
                 "shasum": ""
             },
             "require": {
@@ -1674,7 +1674,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3"
+                "BSD-3-Clause"
             ],
             "authors": [
                 {
@@ -1691,7 +1691,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-06-06 06:06:01"
+            "time": "2013-08-03 15:35:31"
         }
     ],
     "packages-dev": [
