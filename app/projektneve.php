@@ -51,7 +51,9 @@ $app->match("/fb_addhandler", function (Request $request) use ($app) {
 //--------------------------------------------------------------------------------------------------
 
 $app->match("/", function () use ($app) {
-    return $app["twig"]->render("homepage.html.twig");
+    return $app["twig"]->render("homepage.html.twig", array(
+        "liked" =>  $app["fb"]->isPageLiked(),
+    ));
 })->bind("homepage");
 
 //--------------------------------------------------------------------------------------------------

@@ -2,7 +2,9 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-define("ROOT", __DIR__ . "/../");
+if (!defined("ROOT")) {
+    define("ROOT", __DIR__ . "/../");
+}
 
 $app = new Silex\Application();
 
@@ -69,7 +71,7 @@ if ($app["debug"]) {
     $app->mount("_profiler", $p);
 }
 
-$app["session"]->start();
+//$app["session"]->start();
 
 $app["twig"] = $app->share($app->extend("twig", function (\Twig_Environment $twig, Silex\Application $app) {
     $twig->addGlobal("fb", $app["fb.options"]);
