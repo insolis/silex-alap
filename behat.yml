@@ -1,0 +1,8 @@
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      base_url: "http://www.google.hu"
+      javascript_session: sahi
+      browser_name: phantomjs
+      goutte: ~
+      sahi: ~
