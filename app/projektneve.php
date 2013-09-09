@@ -12,6 +12,8 @@ $app->before(function (Request $request) use ($app) {
 
         if (isset($data["user_id"])) {
             $app["session"]->set("user_id", $data["user_id"]);
+        } else {
+            $app["session"]->remove("user_id");
         }
     }
 
