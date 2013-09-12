@@ -17,7 +17,7 @@
         "insolis/repository-service-provider": "1.*",
         "insolis/facebook-service-provider": "dev-master@dev",
         "silex/web-profiler": "1.*",
-        "fp/lightopenid": "dev-master@dev"
+        "ircmaxell/password-compat": "1.*"
     },
 
     "autoload": {

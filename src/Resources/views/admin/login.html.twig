@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projekt Neve</title>
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #eee;
+        }
+
+        .form-signin {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .form-signin .form-control {
+            position: relative;
+            font-size: 16px;
+            height: auto;
+            padding: 10px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+        .form-signin input[type="text"] {
+            margin-bottom: -1px;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <form class="form-signin" method="post" action="{{ app.request.requesturi }}">
+            {% if error %}
+                <div class="alert alert-danger">
+                    Hibás felhasználónév és/vagy jelszó.
+                </div>
+            {% endif %}
+            <input type="text" class="form-control" placeholder="Felhasználónév" name="username" autofocus="autofocus" />
+            <input type="password" class="form-control" placeholder="Jelszó" name="password" />
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Bejelentkezés</button>
+        </form>
+    </div>
+</body>
+</html>

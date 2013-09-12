@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
+<head>
     <meta charset="utf8" />
     <title>Projekt neve</title>
-    <link rel="stylesheet" href="{{ app.request.basepath }}/css/bootstrap.min.css" />
+    <link href="{{ app.request.basepath }}/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ app.request.basepath }}/css/backend.css" />
     {% block head %}{% endblock %}
-  </head>
-  <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top bs-docs-nav" role="banner">
         <div class="container">
-          <a class="brand" href="{{ path("admin_homepage") }}">Projekt neve</a>
+            <div class="navbar-header">
+                <a href="{{ path("admin_homepage") }}" class="navbar-brand">Projekt neve</a>
+            </div>
+            <nav role="navigation">
+                <ul class="nav navbar-nav">
+                    {#<li><a href="{{ path("admin_moderate_index") }}">Moderálás</a></li>#}
+                </ul>
 
-          {% if app.session.has("admin_authenticated") %}
-          <ul class="nav">
-              {# ilyen egy menupont: <li><a href="{{ path("admin_harmadikbadge") }}">Harmadik badge</a></li> #}
-          </ul>
-
-          <ul class="nav pull-right">
-              <li><a href="{{ path("admin_logout") }}">Kijelentkezés</a></li>
-          </ul>
-          {% endif %}
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="{{ path("admin_logout") }}">Kijelentkezés</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-    </div>
+    </nav>
 
     <div class="container">
-      {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
     </div>
-  </body>
+</body>
 </html>

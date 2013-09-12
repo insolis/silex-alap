@@ -49,6 +49,7 @@ $app->register(new Silex\Provider\ValidatorServiceProvider());
 
 
 $app->register(new Insolis\Provider\RepositoryServiceProvider(), array("repository.repositories" => array(
+    "db.admin"      =>  'bDone\Repository\Admin',
 )));
 
 $app->register(new Insolis\Provider\FacebookServiceProvider());

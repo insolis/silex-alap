@@ -12,37 +12,42 @@ class Admin implements ControllerProviderInterface
         $controllers = $app["controllers_factory"];
 
         $app->before(function (Request $request) use ($app) {
+            $route = $request->get("_route");
+
             if (
-                false === strpos($request->get("_route"), "admin_")
+                false === strpos($route, "admin_")
             ) {
                 return;
             }
 
-            // ha nincs email, akkor szerzunk
-            if (!$app["session"]->has("admin_email")) {
-                $openid = new \LightOpenID($request->server->get("SERVER_NAME"));
-
-                if (!$openid->mode) {
-                    $openid->identity = "https://www.google.com/accounts/o8/id";
-                    $openid->required = ["email" => "contact/email"];
-
-                    return $app->redirect($openid->authUrl());
-                } else {
-                    if ($openid->validate()) {
-                        $attributes = $openid->getAttributes();
-                        $app["session"]->set("admin_email", $attributes["contact/email"]);
-                    }
-                }
-            }
-
-            $email = $app["session"]->get("admin_email");
             if (
-                false === strpos($email, "@bdone.hu") &&
-                false === strpos($email, "@karmamedia.eu")
+                !$app["session"]->has("admin_authenticated") &&
+                0 === strpos($route, "admin_") &&
+                "admin_login" !== $route
             ) {
-                $app->abort(403);
+                return $app->redirect($app["url_generator"]->generate("admin_login"));
             }
         });
+
+        //------------------------------------------------------------------------------------------
+
+        $controllers->match("/login", function (Request $request) use ($app) {
+            if ($request->isMethod("post") && $app["db.admin"]->isValid($request->request->get("username"), $request->request->get("password"))) {
+                $app["session"]->set("admin_authenticated", true);
+
+                return $app->redirect($app["url_generator"]->generate("admin_homepage"));
+            }
+
+            return $app["twig"]->render("admin/login.html.twig", array("error" => $request->isMethod("post")));
+        })->bind("admin_login");
+
+        //------------------------------------------------------------------------------------------
+
+        $controllers->get("/logout", function () use ($app) {
+            $app["session"]->remove("admin_authenticated");
+
+            return $app->redirect($app["url_generator"]->generate("admin_homepage"));
+        })->bind("admin_logout");
 
         //------------------------------------------------------------------------------------------
 

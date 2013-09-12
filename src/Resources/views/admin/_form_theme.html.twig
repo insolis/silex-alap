@@ -1,0 +1,38 @@
+{% block form_row %}
+    <div class="form-group{% if form.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form, null, { "label_attr": { "class": "col-lg-2 control-label" } }) }}
+        <div class="col-lg-10">
+            {{ form_widget(form, { "attr": { "class": "form-control" } }) }}
+            {% if errors %}
+                <span class="help-block">{% for e in errors %}{{ e.message }}{% endfor %}</span>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block file_row %}
+    <div class="form-group{% if form.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form, null, { "label_attr": { "class": "col-lg-2 control-label" } }) }}
+        <div class="col-lg-10">
+            {{ form_widget(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block date_row %}
+    <div class="form-group{% if form.vars.errors|length %} has-error{% endif %}">
+        {{ form_label(form, null, { "label_attr": { "class": "col-lg-2 control-label" } }) }}
+        <div class="col-lg-2">
+            {{ form_widget(form.year, { "attr": { "class": "form-control" } }) }}
+            {% if errors %}
+                <span class="help-block">{% for e in errors %}{{ e.message }}{% endfor %}</span>
+            {% endif %}
+        </div>
+        <div class="col-lg-2">
+            {{ form_widget(form.month, { "attr": { "class": "form-control" } }) }}
+        </div>
+        <div class="col-lg-1">
+            {{ form_widget(form.day, { "attr": { "class": "form-control" } }) }}
+        </div>
+    </div>
+{% endblock %}
