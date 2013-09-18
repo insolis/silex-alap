@@ -20,8 +20,16 @@ $app->register(new Silex\Provider\SessionServiceProvider(), array(
     "session.storage.options" => array(
         "name" => "projekt_neve",
     ),
-    "session.storage.save_path" => __DIR__ . "/../cache/sessions/",
 ));
+
+$app["session.storage.handler"] = $app->share(function () use ($app) {
+    return new Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler(
+        $app["db"]->getWrappedConnection(),
+        array(
+            "db_table"  =>  "projektneve_session",
+        )
+    );
+});
 
 $app->register(new Silex\Provider\SwiftmailerServiceProvider());
 $app['swiftmailer.transport'] = $app->share(function () use ($app) {
