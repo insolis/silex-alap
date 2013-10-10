@@ -59,7 +59,6 @@ php::module { 'php5-curl': }
 php::module { 'php5-gd': }
 php::module { 'php5-intl': }
 php::module { 'php5-mcrypt': }
-php::module { 'php5-mysqlnd': }
 
 class { 'php::devel':
   require => Class['php'],
@@ -130,6 +129,11 @@ mysql::db { 'silex-alap':
 
 class { 'phpmyadmin':
   require => [Class['mysql::server'], Class['mysql::config'], Class['php']],
+}
+
+file { '/etc/apache2/conf.d/phpmyadmin':
+    ensure => 'link',
+    target => '/etc/phpmyadmin/apache.conf',
 }
 
 apache::vhost { 'phpmyadmin':
