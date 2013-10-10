@@ -23,7 +23,8 @@ package { [
     'build-essential',
     'vim',
     'curl',
-    'git-core'
+    'git-core',
+    'mc',
   ]:
   ensure  => 'installed',
 }
@@ -36,8 +37,12 @@ apache::dotconf { 'custom':
 
 apache::module { 'rewrite': }
 
+file { '/etc/apache2/sites-enabled/000-default':
+  ensure => absent,
+}
+
 apache::vhost { 'localhost':
-  server_name   => 'localhost',
+  server_name   => false, # hogy ez legyen a default
   serveraliases => [
 ],
   docroot       => '/vagrant/',
@@ -134,6 +139,7 @@ class { 'phpmyadmin':
 file { '/etc/apache2/conf.d/phpmyadmin':
     ensure => 'link',
     target => '/etc/phpmyadmin/apache.conf',
+    require => Class["phpmyadmin"],
 }
 
 apache::vhost { 'phpmyadmin':
