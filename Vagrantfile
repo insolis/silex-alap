@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
 controluser_password=root" > /etc/phpmyadmin.facts;'
 
   config.vm.provision :puppet do |puppet|
-    puppet.manifests_path = "vagrant/manifests"
+    puppet.manifests_path = "vagrant"
     puppet.module_path = "vagrant/modules"
     puppet.options = ['--verbose']
   end
