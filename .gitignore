@@ -3,3 +3,5 @@ vendor
 
 nbproject
 .idea
+
+.vagrant
