@@ -46,6 +46,10 @@ $app['swiftmailer.transport'] = $app->share(function () use ($app) {
 $app->register(new Silex\Provider\TranslationServiceProvider(), array("translator.messages" => array()));
 
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
+    "twig.options"    =>  array(
+        "cache"       =>  __DIR__ . "/../cache/twig/",
+        "auto_reload" => true,
+    ),
     "twig.path" => array(
         __DIR__ . "/../src/Resources/views",
         __DIR__ . "/../vendor/symfony/twig-bridge/Symfony/Bridge/Twig/Resources/views/Form",
